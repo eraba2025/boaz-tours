@@ -104,19 +104,28 @@
       <section class="gallery section" id="gallery" aria-labelledby="gallery-title">
         <div class="container">
           <h2 id="gallery-title">גלריית תמונות</h2>
-          <div class="gallery-grid">
-            <article class="gallery-card gallery-card--wide">
-              <span>מרחבים פתוחים</span>
-            </article>
-            <article class="gallery-card">
-              <span>מפגשים בשטח</span>
-            </article>
-            <article class="gallery-card">
-              <span>נופי בוקר</span>
-            </article>
-            <article class="gallery-card gallery-card--wide">
-              <span>רגעים של חוויה</span>
-            </article>
+          <div class="gallery-carousel">
+            <div class="gallery-carousel-row">
+              <button class="carousel-arrow" id="galleryPrev" aria-label="תמונה קודמת" type="button">❯</button>
+              <div class="gallery-track-wrap">
+                <div class="gallery-track" id="galleryTrack">
+                  <article class="gallery-card gallery-card--wide">
+                    <span>מרחבים פתוחים</span>
+                  </article>
+                  <article class="gallery-card">
+                    <span>מפגשים בשטח</span>
+                  </article>
+                  <article class="gallery-card">
+                    <span>נופי בוקר</span>
+                  </article>
+                  <article class="gallery-card gallery-card--wide">
+                    <span>רגעים של חוויה</span>
+                  </article>
+                </div>
+              </div>
+              <button class="carousel-arrow" id="galleryNext" aria-label="תמונה הבאה" type="button">❮</button>
+            </div>
+            <div class="carousel-dots" id="galleryDots"></div>
           </div>
         </div>
       </section>
@@ -124,67 +133,76 @@
       <section class="tours section" id="tours" aria-labelledby="tours-title">
         <div class="container">
           <h2 id="tours-title">המסלולים והסיורים שלי</h2>
-          <div class="tours-grid">
-            <article class="tour-card" tabindex="0" aria-label="כרטיס חברות וארגונים">
-              <div class="tour-card-inner">
-                <div class="tour-card-front">
-                  <h3>חברות וארגונים</h3>
-                </div>
-                <div class="tour-card-back">
-                  <p>חוויה מגבשת ששוברת שגרה, מחברת בין אנשים וטווה זיכרונות משותפים מחוץ למשרד בלב נופיה הקסומים של ארצנו.</p>
+          <div class="tours-carousel-wrap">
+            <div class="tours-carousel-row">
+              <button class="carousel-arrow" id="tourPrev" aria-label="כרטיס קודם" type="button">❯</button>
+              <div class="tours-track-wrap">
+                <div class="tours-carousel-inner" id="toursTrack">
+                  <article class="tour-card" tabindex="0" aria-label="כרטיס חברות וארגונים">
+                    <div class="tour-card-inner">
+                      <div class="tour-card-front">
+                        <h3>חברות וארגונים</h3>
+                      </div>
+                      <div class="tour-card-back">
+                        <p>חוויה מגבשת ששוברת שגרה, מחברת בין אנשים וטווה זיכרונות משותפים מחוץ למשרד בלב נופיה הקסומים של ארצנו.</p>
+                      </div>
+                    </div>
+                  </article>
+                  <article class="tour-card" tabindex="0" aria-label="כרטיס סיורים עירוניים ושווקים">
+                    <div class="tour-card-inner">
+                      <div class="tour-card-front">
+                        <h3>סיורים עירוניים ושווקים</h3>
+                      </div>
+                      <div class="tour-card-back">
+                        <p>טיול בסמטאות ציוריות ובשווקים ססגוניים, שבו כל אבן לוחשת סיפור, וכל ניחוח מעורר חושים של היסטוריה ותרבות חיה.</p>
+                      </div>
+                    </div>
+                  </article>
+                  <article class="tour-card" tabindex="0" aria-label="כרטיס שמחות ואירועים מיוחדים">
+                    <div class="tour-card-inner">
+                      <div class="tour-card-front">
+                        <h3>שמחות ואירועים מיוחדים</h3>
+                      </div>
+                      <div class="tour-card-back">
+                        <p>לחגוג את הרגעים היפים ביותר בחיים תחת כיפת השמיים, עם טבע שמחבק ואווירה שתהפוך כל ציון דרך לסיפור אגדה בלתי נשכח.</p>
+                      </div>
+                    </div>
+                  </article>
+                  <article class="tour-card" tabindex="0" aria-label="כרטיס כדורים פורחים">
+                    <div class="tour-card-inner">
+                      <div class="tour-card-front">
+                        <h3>כדורים פורחים</h3>
+                      </div>
+                      <div class="tour-card-back">
+                        <p>להתרומם מעל האדמה ולראות את הארץ נפתחת מתחתינו כמו ציור חי, ברגע נדיר של שקט, חופש ויופי שמרחיב את הלב.</p>
+                      </div>
+                    </div>
+                  </article>
+                  <article class="tour-card" tabindex="0" aria-label="כרטיס אזרחים ותיקים">
+                    <div class="tour-card-inner">
+                      <div class="tour-card-front">
+                        <h3>אזרחים ותיקים</h3>
+                      </div>
+                      <div class="tour-card-back">
+                        <p>הליכה נינוחה בשבילי הזיכרון, בקצב המאפשר להתענג על יפי הטבע, עם סיפורים מחממי לב המחברים עבר מפואר והווה קסום.</p>
+                      </div>
+                    </div>
+                  </article>
+                  <article class="tour-card" tabindex="0" aria-label="כרטיס ארגון נכי צה&quot;ל ובעלי מוגבלויות">
+                    <div class="tour-card-inner">
+                      <div class="tour-card-front">
+                        <h3>ארגון נכי צה"ל ובעלי מוגבלויות</h3>
+                      </div>
+                      <div class="tour-card-back">
+                        <p>גישה של אהבה ונגישות ללא פשרות, המבטיחה שלכל אחד ואחת הזכות לחוות, להתרגש ולגלות את יופיה של הארץ, יחד.</p>
+                      </div>
+                    </div>
+                  </article>
                 </div>
               </div>
-            </article>
-            <article class="tour-card" tabindex="0" aria-label="כרטיס סיורים עירוניים ושווקים">
-              <div class="tour-card-inner">
-                <div class="tour-card-front">
-                  <h3>סיורים עירוניים ושווקים</h3>
-                </div>
-                <div class="tour-card-back">
-                  <p>טיול בסמטאות ציוריות ובשווקים ססגוניים, שבו כל אבן לוחשת סיפור, וכל ניחוח מעורר חושים של היסטוריה ותרבות חיה.</p>
-                </div>
-              </div>
-            </article>
-            <article class="tour-card" tabindex="0" aria-label="כרטיס שמחות ואירועים מיוחדים">
-              <div class="tour-card-inner">
-                <div class="tour-card-front">
-                  <h3>שמחות ואירועים מיוחדים</h3>
-                </div>
-                <div class="tour-card-back">
-                  <p>לחגוג את הרגעים היפים ביותר בחיים תחת כיפת השמיים, עם טבע שמחבק ואווירה שתהפוך כל ציון דרך לסיפור אגדה בלתי נשכח.</p>
-                </div>
-              </div>
-            </article>
-            <article class="tour-card" tabindex="0" aria-label="כרטיס כדורים פורחים">
-              <div class="tour-card-inner">
-                <div class="tour-card-front">
-                  <h3>כדורים פורחים</h3>
-                </div>
-                <div class="tour-card-back">
-                  <p>להתרומם מעל האדמה ולראות את הארץ נפתחת מתחתינו כמו ציור חי, ברגע נדיר של שקט, חופש ויופי שמרחיב את הלב.</p>
-                </div>
-              </div>
-            </article>
-            <article class="tour-card" tabindex="0" aria-label="כרטיס אזרחים ותיקים">
-              <div class="tour-card-inner">
-                <div class="tour-card-front">
-                  <h3>אזרחים ותיקים</h3>
-                </div>
-                <div class="tour-card-back">
-                  <p>הליכה נינוחה בשבילי הזיכרון, בקצב המאפשר להתענג על יפי הטבע, עם סיפורים מחממי לב המחברים עבר מפואר והווה קסום.</p>
-                </div>
-              </div>
-            </article>
-            <article class="tour-card" tabindex="0" aria-label="כרטיס ארגון נכי צה"ל ובעלי מוגבלויות">
-              <div class="tour-card-inner">
-                <div class="tour-card-front">
-                  <h3>ארגון נכי צה"ל ובעלי מוגבלויות</h3>
-                </div>
-                <div class="tour-card-back">
-                  <p>גישה של אהבה ונגישות ללא פשרות, המבטיחה שלכל אחד ואחת הזכות לחוות, להתרגש ולגלות את יופיה של הארץ, יחד.</p>
-                </div>
-              </div>
-            </article>
+              <button class="carousel-arrow" id="tourNext" aria-label="כרטיס הבא" type="button">❮</button>
+            </div>
+            <div class="carousel-dots" id="toursDots"></div>
           </div>
         </div>
       </section>

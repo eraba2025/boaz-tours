@@ -42,19 +42,98 @@ if (menuToggle && primaryNav) {
   });
 }
 
-// ── Tours Flip Cards ──
-const tourCards = document.querySelectorAll(".tour-card");
-tourCards.forEach((card) => {
-  card.addEventListener("click", () => {
-    card.classList.toggle("is-flipped");
+// ── Gallery Carousel ──
+(function () {
+  const track = document.getElementById('galleryTrack');
+  const dotsWrap = document.getElementById('galleryDots');
+  if (!track || !dotsWrap) return;
+
+  const cards = Array.from(track.children);
+  const total = cards.length;
+  let current = 0;
+
+  cards.forEach((_, i) => {
+    const dot = document.createElement('button');
+    dot.type = 'button';
+    dot.className = 'carousel-dot' + (i === 0 ? ' is-active' : '');
+    dot.setAttribute('aria-label', `תמונה ${i + 1}`);
+    dot.addEventListener('click', () => goTo(i));
+    dotsWrap.appendChild(dot);
   });
-  card.addEventListener("keydown", (e) => {
-    if (e.key === "Enter" || e.key === " ") {
-      e.preventDefault();
-      card.classList.toggle("is-flipped");
-    }
+
+  function goTo(idx) {
+    current = (idx + total) % total;
+    track.style.transform = `translateX(${-current * 100}%)`;
+    dotsWrap.querySelectorAll('.carousel-dot').forEach((d, i) => {
+      d.classList.toggle('is-active', i === current);
+    });
+  }
+
+  const prevBtn = document.getElementById('galleryPrev');
+  const nextBtn = document.getElementById('galleryNext');
+  if (prevBtn) prevBtn.addEventListener('click', () => goTo(current - 1));
+  if (nextBtn) nextBtn.addEventListener('click', () => goTo(current + 1));
+
+  let sx = 0;
+  const wrap = track.parentElement;
+  wrap.addEventListener('touchstart', e => { sx = e.changedTouches[0].clientX; }, { passive: true });
+  wrap.addEventListener('touchend', e => {
+    const d = e.changedTouches[0].clientX - sx;
+    if (Math.abs(d) > 40) d < 0 ? goTo(current + 1) : goTo(current - 1);
+  }, { passive: true });
+})();
+
+// ── Tours Carousel + Flip Cards ──
+(function () {
+  const track = document.getElementById('toursTrack');
+  const dotsWrap = document.getElementById('toursDots');
+  if (!track || !dotsWrap) return;
+
+  const cards = Array.from(track.querySelectorAll('.tour-card'));
+  const total = cards.length;
+  let current = 0;
+
+  cards.forEach((_, i) => {
+    const dot = document.createElement('button');
+    dot.type = 'button';
+    dot.className = 'carousel-dot' + (i === 0 ? ' is-active' : '');
+    dot.setAttribute('aria-label', `כרטיס ${i + 1}`);
+    dot.addEventListener('click', () => goTo(i));
+    dotsWrap.appendChild(dot);
   });
-});
+
+  function goTo(idx) {
+    cards[current].classList.remove('is-flipped');
+    current = (idx + total) % total;
+    track.style.transform = `translateX(${-current * 100}%)`;
+    dotsWrap.querySelectorAll('.carousel-dot').forEach((d, i) => {
+      d.classList.toggle('is-active', i === current);
+    });
+  }
+
+  const prevBtn = document.getElementById('tourPrev');
+  const nextBtn = document.getElementById('tourNext');
+  if (prevBtn) prevBtn.addEventListener('click', () => goTo(current - 1));
+  if (nextBtn) nextBtn.addEventListener('click', () => goTo(current + 1));
+
+  cards.forEach(card => {
+    card.addEventListener('click', () => card.classList.toggle('is-flipped'));
+    card.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        card.classList.toggle('is-flipped');
+      }
+    });
+  });
+
+  let sx = 0;
+  const wrap = track.parentElement;
+  wrap.addEventListener('touchstart', e => { sx = e.changedTouches[0].clientX; }, { passive: true });
+  wrap.addEventListener('touchend', e => {
+    const d = e.changedTouches[0].clientX - sx;
+    if (Math.abs(d) > 40) d < 0 ? goTo(current + 1) : goTo(current - 1);
+  }, { passive: true });
+})();
 
 // ── Accessibility widget ──
 const a11yToggle = document.getElementById("a11yToggle");
