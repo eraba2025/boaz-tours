@@ -354,6 +354,54 @@ h3 {
   margin-top: -0.25rem;
 }
 
+.about-toggle {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: var(--glass-bg-strong);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+  border-radius: 999px;
+  padding: 0.75rem 1.5rem;
+  font-family: inherit;
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: var(--white-soft);
+  cursor: pointer;
+  box-shadow: var(--glass-shadow);
+  transition: background 0.2s;
+  text-shadow: 0 1px 8px rgba(0,0,0,0.5);
+}
+
+.about-toggle:hover {
+  background: rgba(252, 250, 242, 0.44);
+}
+
+.about-chevron {
+  transition: transform 0.35s ease;
+  flex-shrink: 0;
+  stroke: var(--white-soft);
+}
+
+.about-toggle[aria-expanded="true"] .about-chevron {
+  transform: rotate(180deg);
+}
+
+.about-panel {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.42s ease;
+}
+
+.about-panel.is-open {
+  grid-template-rows: 1fr;
+}
+
+.about-panel > .about-grid {
+  overflow: hidden;
+}
+
 .about-grid {
   display: grid;
   gap: 1.6rem;

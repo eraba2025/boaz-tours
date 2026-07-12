@@ -42,6 +42,29 @@ if (menuToggle && primaryNav) {
   });
 }
 
+// ── About toggle (collapse/expand) ──
+const aboutToggle = document.getElementById("aboutToggle");
+const aboutPanel  = document.getElementById("aboutPanel");
+
+function openAbout() {
+  if (aboutPanel && !aboutPanel.classList.contains("is-open")) {
+    aboutPanel.classList.add("is-open");
+    if (aboutToggle) aboutToggle.setAttribute("aria-expanded", "true");
+  }
+}
+
+if (aboutToggle && aboutPanel) {
+  aboutToggle.addEventListener("click", () => {
+    const isOpen = aboutPanel.classList.toggle("is-open");
+    aboutToggle.setAttribute("aria-expanded", String(isOpen));
+  });
+}
+
+// Open about panel when nav "אודות" link is clicked
+document.querySelectorAll('a[href="#about"]').forEach(link => {
+  link.addEventListener("click", openAbout);
+});
+
 // ── Gallery Carousel ──
 (function () {
   const track = document.getElementById('galleryTrack');
